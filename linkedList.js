@@ -33,9 +33,6 @@ function linkedListGenerator() {
       current.next = newNode;
     }
     tail = newNode;
-    // console.log("THE NEW VALUE IS: " + value);
-    // console.log(newNode);
-    // console.log(head);
     return newNode;
   }
 
@@ -48,25 +45,41 @@ function linkedListGenerator() {
   }
 
   // 1) Start at the head node of your linked list
-  // 2) Check if value matches what you're searching for, if found return that node
-  // 3) If not found, move to the next node via current node's .next property
-  // 4) Repeat until .next is null (tail / end of list)
+  // 2) Advance 'number' of nodes down the linked list
+  // 3) Return the value at the 'number'-th node
+  // 4) Number '2' should return eff.org
 
-  let current = head;
+  //   function get(number) {
+  //     if (number < 0) {
+  //       return "Error: not a valid number";
+  //     }
+  //     if (number === 0) {
+  //       return head;
+  //     }
+  //     if (number > 0) {
+  //       console.log("This iteration");
+  //       console.log(number);
+  //       console.log(head);
+  //       head = head.next;
+  //       get(--number);
+  //       // console.log(head);
+  //       return head.next;
+  //     }
+  //   }
 
   function get(number) {
-    if (number < 0) {
-      return;
+    let current = head;
+    while (number > 0) {
+      if (current === null) {
+        return false;
+      }
+      current = current.next;
+      number--;
     }
     if (number === 0) {
-      console.log("THE NODE AT POSITION " + number + " IS: ");
-      console.log(current);
-      return current;
-    }
-    if (number > 0) {
-      current = current.next;
-      get(--number);
-      // console.log(current);
+      if (current === null) {
+        return false;
+      }
       return current;
     }
   }
